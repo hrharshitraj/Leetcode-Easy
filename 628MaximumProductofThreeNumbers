@@ -1,0 +1,32 @@
+class Solution {
+    public int maximumProduct(int[] nums) {
+        int n = nums.length;
+        Arrays.sort(nums);
+        int neg=0;
+        int negMul = 1;
+
+        int i=0;
+        while(i<n && nums[i]<0) {
+            neg++;
+            i++;
+        }
+
+        int maxMul = 1;
+        int j=n-1;
+        while(j>n-4) {
+            maxMul *= nums[j];
+            j--;
+        }
+        if(neg<2) return maxMul;
+        else {
+            negMul = nums[0]*nums[1]*nums[n-1];
+        }
+        if(negMul > maxMul) return negMul;
+        return maxMul;
+    }
+}
+
+Related Topics-
+Array
+Math
+Sorting
