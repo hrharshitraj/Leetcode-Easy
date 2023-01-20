@@ -1,0 +1,41 @@
+class Solution {
+    static final int CHAR = 256;
+    public int firstUniqChar(String s) {
+        int idx[] = new int[CHAR];
+        Arrays.fill(idx,-1);
+
+        for(int i=0; i<s.length(); i++) {
+            if(idx[s.charAt(i)] == -1) idx[s.charAt(i)] = i;
+            else idx[s.charAt(i)] = -2;
+        }
+
+        int res = Integer.MAX_VALUE;
+        for(int i=0; i<CHAR; i++) {
+            if(idx[i] >= 0) {
+                res = Math.min(res,idx[i]);
+            }
+        }
+        
+        return (res == Integer.MAX_VALUE) ? -1 : res;
+    }
+}
+
+/*
+    HashMap <Character, Integer> hm = new HashMap<>();
+        for(int i = 0; i < s.length(); i++) {
+            hm.put(s.charAt(i),hm.getOrDefault(s.charAt(i), 0) + 1);
+        }
+        for(int i = 0; i < s.length(); i++) {
+            if(hm.get(s.charAt(i)) == 1) {
+                return i;
+            }
+        }
+        return -1;
+*/
+
+Related Topics-
+
+Hash Table
+String
+Queue
+Counting
