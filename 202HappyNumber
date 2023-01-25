@@ -1,0 +1,28 @@
+class Solution {
+    public boolean isHappy(int n) {
+        HashSet<Integer> set = new HashSet();
+        int sq = 0;
+        if(n==1) return true;
+
+        while(set.contains(sq)==false || sq!=1) {
+            while(n>0) {
+                int rem = n%10;
+                sq = sq + rem*rem;
+                n /= 10;
+            }
+            if(sq==1) return true;
+            else if(set.contains(sq)) return false;
+            else {
+                set.add(sq);
+                n = sq;
+                sq = 0;
+            }
+        }
+        return false;
+    }
+}
+
+Related Topics-
+Hash Table
+Math
+Two Pointers
