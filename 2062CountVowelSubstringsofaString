@@ -1,0 +1,33 @@
+class Solution {
+    public int countVowelSubstrings(String word) {
+        int n = word.length();
+        if(n<5) return 0;
+        
+        HashSet<Character> set = new HashSet();
+        HashSet<Character> vowels = new HashSet();
+        int res = 0;
+
+        vowels.add('a'); vowels.add('e'); vowels.add('i');
+        vowels.add('o'); vowels.add('u');
+
+        int j=0;
+        while(j<n-4) {
+            if(vowels.contains(word.charAt(j))) {
+                for(int i=j; i<n; i++) {
+                    if(vowels.contains(word.charAt(i))) set.add(word.charAt(i));
+                    else  {
+                        break;
+                    }
+                    if(set.size()==5) res++;
+                }
+            }
+            set.clear();
+            j++;    
+        }
+        return res;
+    }
+}
+
+Related Topics-
+Hash Table
+String
