@@ -1,0 +1,26 @@
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+        int n = nums.length;
+        HashMap<Integer,Integer> map= new HashMap<>();
+        int val=1000000;
+        int freq=0;
+
+        for(int i=0; i<n; i++){
+            if(nums[i]%2 == 0){
+                int curr = map.getOrDefault(nums[i],0)+1;
+                map.put(nums[i],curr);
+                if(curr>freq || (curr==freq && nums[i]<val)) {
+                    val = nums[i];
+                    freq = curr;
+                }
+            }
+        }
+        if(freq==0) return -1;
+        return val;
+    }
+}
+
+Related Topics-
+Array
+Hash Table
+Counting
