@@ -1,0 +1,35 @@
+/*
+Hint-
+(1/2)
+Check each word separately if it can be typed.
+
+(2/2)
+A word can be typed if all its letters are not broken.
+*/
+
+class Solution {
+    public int canBeTypedWords(String text, String brokenLetters) {
+        int bLen = brokenLetters.length();
+        HashSet<Character> set = new HashSet();
+        int count = 0;
+
+        String str[] = text.split(" ");
+        int n = str.length;
+
+        for(int i=0; i<bLen; i++) set.add(brokenLetters.charAt(i));
+        for(int i=0; i<n; i++) {
+            int len = str[i].length();
+            int j=0;
+            while(j<len) {
+                if(set.contains(str[i].charAt(j))) break;
+                j++;
+            }
+            if(j==len) count++;
+        }
+        return count;
+    }
+}
+
+Related Topics-
+Hash Table
+String
