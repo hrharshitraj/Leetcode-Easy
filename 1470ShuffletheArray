@@ -1,0 +1,29 @@
+/*
+Hint
+(1/1)
+Use two pointers to create the new array of 2n elements. 
+The first starting at the beginning and the other starting at (n+1)th position. 
+Alternate between them and create the new array.
+*/
+
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int arr[] = new int[2*n];
+        int m = n;
+        int i = 0;
+        int j = 0;
+
+        while(j<2*n) {
+            arr[j] = nums[i];
+            arr[j+1] = nums[m];
+
+            m++;
+            i++;
+            j = j+2;
+        }
+        return arr;
+    }
+}
+
+Related Topics-
+Array
