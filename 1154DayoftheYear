@@ -1,0 +1,37 @@
+/*
+Hint-
+(1/1)
+Have a integer array of how many days there are per month. 
+February gets one extra day if its a leap year. 
+Then, we can manually count the ordinal as day + (number of days in months before this one).
+*/
+
+class Solution {
+    public int dayOfYear(String date) {
+        int ans = 0;
+        int year = Integer.valueOf(date.substring(0, 4));
+        int month = Integer.valueOf(date.substring(5, 7));
+        int day = Integer.valueOf(date.substring(8));
+
+        int thirtyOne = 31;
+        int thirty = 30;
+        int feb = 0;
+        if(isLeapYear(year)) feb = 29;
+        else feb = 28;
+        int[] days = {thirtyOne, feb, thirtyOne, thirty, thirtyOne, thirty, thirtyOne, thirtyOne, thirty, thirtyOne, thirty, thirtyOne};
+
+        for (int i=0; i<month-1; i++) ans += days[i];
+
+        return ans+day;
+    }
+
+    public boolean isLeapYear(int year) {
+        if(year%4==0 && year%100!=0) return true;
+        else if(year%400==0) return true;
+        return false;
+    }
+}
+
+Related Topics-
+Math
+String
