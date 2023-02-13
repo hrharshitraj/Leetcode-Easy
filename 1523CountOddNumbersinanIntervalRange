@@ -1,0 +1,18 @@
+/*
+Hint-
+(1/2)
+If the range (high - low + 1) is even, the number of even and odd numbers in this range will be the same.
+
+(2/2)
+If the range (high - low + 1) is odd, the solution will depend on the parity of high and low.
+*/
+
+class Solution {
+    public int countOdds(int low, int high) {
+        if(low%2==1 || high%2==1) return ((high-low)/2)+1;
+        return (high-low)/2;
+    }
+}
+
+Related Topics-
+Math
