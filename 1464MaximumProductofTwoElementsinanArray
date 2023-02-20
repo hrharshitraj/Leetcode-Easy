@@ -1,0 +1,19 @@
+/*
+Hint
+(1/1)
+Use brute force: two loops to select i and j, then select the maximum value of (nums[i]-1)*(nums[j]-1).
+*/
+
+class Solution {
+    public int maxProduct(int[] nums) {
+        int n = nums.length;
+        Arrays.sort(nums);
+
+        return (nums[n-1]-1)*(nums[n-2]-1);
+    }
+}
+
+Related Topics-
+Array
+Sorting
+Heap (Priority Queue)
