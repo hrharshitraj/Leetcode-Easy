@@ -1,0 +1,39 @@
+/*
+Hint-
+(1/1)
+This problem is exactly like reversing a normal string except that there are certain characters that we have to simply skip. 
+That should be easy enough to do if you know how to reverse a string using the two-pointer approach.
+*/
+
+class Solution {
+    public String reverseOnlyLetters(String s) {
+        int n = s.length();
+        String str = "";
+
+        int left = 0;
+        int right = n-1;
+        while(left<n && right>=0) {
+            while(right>=0 && Character.isLetter(s.charAt(right))==false) {
+                right--;
+            }
+            while(left<n && Character.isLetter(s.charAt(left))==false) {
+                str += s.charAt(left);
+                left++;
+            }
+            if(right>=0) str += s.charAt(right);
+            right--;
+            left++;
+        }
+
+        while(left<n) {
+            str += s.charAt(left);
+            left++;
+        }
+        
+        return str;
+    }
+}
+
+Related Topics-
+Two Pointers
+String
