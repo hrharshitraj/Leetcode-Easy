@@ -6,6 +6,7 @@ A string is incorrect if it contains a character that is not allowed
 Constraints are small enough for brute force
 */
 
+// Naive Solution- O(n^2)
 class Solution {
     public int countConsistentStrings(String allowed, String[] words) {
         int n = words.length;
@@ -28,6 +29,34 @@ class Solution {
             if(flag == true) count++;
         }
         return count;
+    }
+}
+
+// Efficient Solution- O(n)
+class Solution {
+    public int markCharactersOf(String word) {
+        int result = 0;
+        
+        for (char ch : word.toCharArray()) {
+            int position = ch - 'a';
+            result |= 1 << position;
+        }
+        
+        return result;
+    }
+    
+    public int countConsistentStrings(String allowed, String[] words) {
+        int allowedChars = markCharactersOf(allowed);
+        int answer = 0;
+        
+        for (String word : words) {
+            int wordInWords = markCharactersOf(word);
+            
+            if ((wordInWords & allowedChars) == wordInWords)
+                answer++;
+        }
+        
+        return answer;
     }
 }
 
