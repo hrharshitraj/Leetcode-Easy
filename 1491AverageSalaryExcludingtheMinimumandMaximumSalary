@@ -1,0 +1,37 @@
+/*
+Hint
+(1/1)
+Get the total sum and subtract the minimum and maximum value in the array. Finally divide the result by n - 2.
+*/
+
+class Solution {
+    public double average(int[] salary) {
+        double avg = 0;
+        double sum = 0;
+        int Max = 0;
+        int Min = 0;
+
+        for(int i=0; i<salary.length; i++) {
+            if(salary[i]>salary[Max]) {
+                Max = i;
+            }
+            if(salary[i]<salary[Min]) {
+                Min = i;
+            }
+        }
+
+        for(int i=0; i<salary.length; i++) {
+            if(i!=Max && i!=Min) {
+                sum += salary[i];
+            }
+        }
+
+        double n = salary.length-2;
+        avg = sum/n;
+        return avg;
+    }
+}
+
+Related Topics-
+Array
+Sorting
