@@ -1,0 +1,38 @@
+/*
+Hint-
+(1/2)
+Iterate through all possible consecutive substrings of k characters.
+(2/2)
+Find the number of changes for each substring to make all blocks black, and return the minimum of these.
+*/
+
+class Solution {
+    public int minimumRecolors(String blocks, int k) {
+        int len = blocks.length();
+        int reBlock = 0;
+        int low = 0;
+        int high = 0;
+
+        while(high<k) {
+            if(blocks.charAt(high)=='W') reBlock++;
+            high++;
+        }
+
+        int minRe = reBlock;
+
+        while(high<len) {
+            if(blocks.charAt(low)=='W') reBlock--;
+            if(blocks.charAt(high)=='W') reBlock++;
+
+            low++;
+            high++;
+
+            minRe = Math.min(minRe,reBlock);
+        }
+        return minRe;
+    }
+}
+
+Related Topics-
+String
+Sliding Window
