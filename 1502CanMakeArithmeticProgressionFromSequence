@@ -1,0 +1,24 @@
+/*
+Hint-
+(1/2)
+Consider that any valid arithmetic progression will be in sorted order.
+(2/2)
+Sort the array, then check if the differences of all consecutive elements are equal.
+*/
+
+class Solution {
+    public boolean canMakeArithmeticProgression(int[] arr) {
+        int n = arr.length;
+        Arrays.sort(arr);
+        int diff = arr[1]-arr[0];
+
+        for(int i=2; i<n; i++) {
+            if(arr[i]-arr[i-1]!=diff) return false;
+        }
+        return true;
+    }
+}
+
+Related Topics-
+Array
+Sorting
