@@ -1,0 +1,22 @@
+class Geeks{
+    static void insert(Queue<Integer> q, int k){
+        q.add(k);
+    }
+    
+    static int findFrequency(Queue<Integer> q, int k){
+        int frequency = 0;
+        Queue<Integer> nq = new LinkedList();
+        while(q.size()>0)
+        {
+            if(q.peek()==k) frequency+=1;
+            nq.add(q.poll());
+        }
+        q.addAll(nq);
+        return frequency;
+        // return Collections.frequency(q, k);
+    }   
+}
+
+Related Topic-
+Queue
+Data Structures
