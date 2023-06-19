@@ -1,0 +1,25 @@
+/*
+Hint-
+(1/2)
+Let's note that the altitude of an element is the sum of gains of all the elements behind it.
+(2/2)
+Getting the altitudes can be done by getting the prefix sum array of the given array
+*/
+
+class Solution {
+    public int largestAltitude(int[] gain) {
+        int n = gain.length;
+        int max = 0;
+        int curr = 0;
+
+        for(int i=0; i<n; i++) {
+            curr += gain[i];
+            max = Math.max(max,curr);
+        }
+        return max;
+    }
+}
+
+Related Topics-
+Array
+Prefix Sum
