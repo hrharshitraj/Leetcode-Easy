@@ -1,0 +1,28 @@
+/*
+Hint-
+(1/2)
+In what order should you iterate through the digits?
+(2/2)
+If an odd number exists, where must the number start from?
+*/
+
+class Solution {
+    public String largestOddNumber(String str) {
+        int n = str.length();
+        int high = n-1;
+
+// Simply start iterating from back, the moment you get an odd number, it means from starting till that number, it's largest odd Number in string;
+        while(high>=0) {
+            int curr = str.charAt(high)-'0';
+            if(curr%2!=0) return str.substring(0,high+1);
+            high--;
+        }
+
+        return "";
+    }
+}
+
+Related Topics-
+Math
+String
+Greedy
