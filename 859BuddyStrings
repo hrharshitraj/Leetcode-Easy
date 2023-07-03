@@ -1,0 +1,26 @@
+class Solution {
+    public boolean buddyStrings(String A, String B) {
+        if(A.length() != B.length()) return false;
+
+        if(A.equals(B)) {
+            Set<Character> set = new HashSet<>();
+            for (char c : A.toCharArray()) set.add(c);
+            return set.size() < A.length();   
+            // Even if set's size is 1 less than array A size, it means all is not unique characters, can be swapped;
+            // Equal size of set and A[] means all characters are unique, if you swap any one of them, A would become not equal to B, so return false in that case;
+        }
+
+        List<Integer> diff = new ArrayList<>();
+        // Only store those characters that's different at same index in both the arrays;
+        for(int i=0; i<A.length(); i++) {
+            if(A.charAt(i) != B.charAt(i)) diff.add(i);
+        }
+
+        if(diff.size()==2 && A.charAt(diff.get(0))==B.charAt(diff.get(1)) && A.charAt(diff.get(1))==B.charAt(diff.get(0))) return true;
+        return false;
+  }
+}
+
+Related Topics-
+Hash Table
+String
